@@ -23,12 +23,20 @@ namespace APITest.Controllers
         public IHttpActionResult GetEmployees(int id)
         {
             Employees employees = db.Employees.Find(id);
+
+
             if (employees == null)
             {
                 return NotFound();
             }
 
-            return Ok(employees);
+            var test = new
+            {
+                ID = employees.EmployeeID,
+                Address = employees.Address
+            };
+
+            return Ok(test);
         }
 
         // PUT: api/Employees/5
